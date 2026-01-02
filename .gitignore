@@ -1,0 +1,17 @@
+# Logs
+logs
+*.log
+
+# Dependencies / builds
+node_modules
+dist
+*.tsbuildinfo
+
+# Env
+.env
+
+# Editor / OS
+.DS_Store
+.idea
+.vscode/*
+!.vscode/extensions.json

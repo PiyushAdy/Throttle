@@ -1,0 +1,28 @@
+{
+  "name": "throttle",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Throttle — distributed rate limiting as drop-in Express middleware, backed by one atomic Redis Lua script",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace @throttle/core && npm run build --workspace @throttle/demo",
+    "dev": "npm run build --workspace @throttle/core && npm run dev --workspace @throttle/demo",
+    "start": "npm run start --workspace @throttle/demo",
+    "load-test": "npm run invariant --workspace @throttle/load-test",
+    "invariant": "npm run invariant --workspace @throttle/load-test",
+    "bench": "npm run bench --workspace @throttle/load-test",
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}
