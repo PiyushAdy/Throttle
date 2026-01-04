@@ -1,0 +1,33 @@
+# Throttle local development stack.
+#
+#   docker compose up redis      # just the store — then `npm run dev` for hot-reload work
+#   docker compose up --build    # Redis + the demo app, wired together
+#
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: throttle-redis
+    ports:
+      - '6379:6379'
+    command: ['redis-server', '--appendonly', 'no']
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 3s
+      timeout: 2s
+      retries: 10
+
+  demo:
+    build:
+      context: .
+      dockerfile: apps/demo/Dockerfile
+    container_name: throttle-demo
+    environment:
+      REDIS_URL: redis://redis:6379
+      PORT: '3000'
+      TRUST_PROXY: loopback
+      THROTTLE_FAIL_MODE: closed
+    ports:
+      - '3000:3000'
+    depends_on:
+      redis:
+        condition: service_healthy
