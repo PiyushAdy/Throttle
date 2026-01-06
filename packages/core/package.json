@@ -1,0 +1,37 @@
+{
+  "name": "@throttle/core",
+  "version": "0.1.0",
+  "description": "Distributed rate limiting core — atomic Lua-script evaluation of stacked rules over Redis, with token bucket and sliding window algorithms, typed tiers, pluggable resolvers, draft-8 RateLimit headers and a fail-closed circuit breaker",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "ioredis": "^5.4.1"
+  },
+  "peerDependencies": {
+    "express": ">=4.18.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.16.10",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.2"
+  }
+}
