@@ -1,0 +1,21 @@
+{
+  "name": "@throttle/load-test",
+  "version": "0.1.0",
+  "private": true,
+  "description": "autocannon benchmark and the invariant assertion script — the repo's proof instruments (DECISIONS §14)",
+  "type": "module",
+  "scripts": {
+    "bench": "tsx src/bench.ts",
+    "invariant": "tsx src/invariant.ts"
+  },
+  "dependencies": {
+    "autocannon": "^7.15.0",
+    "ioredis": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/autocannon": "^7.10.5",
+    "@types/node": "^20.16.10",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  }
+}
